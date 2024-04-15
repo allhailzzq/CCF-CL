@@ -1,7 +1,7 @@
 # CCF-CL
 Sample code for paper Forecasting the Clinical Status of a Patient Through Contrastive Learning.
 
-The model training has two steps: 1) contrastive pretraining with contrastive_training.py; 2) transfer learning (for code prediction task) with transfer_naive.py. Specifically, the class FeatureNet is for representation learning, while the class PredNet is for the prediction task.
+The model training has two steps: 1) contrastive pretraining with contrastive_training.py; 2) transfer learning (for code prediction task) with transfer_naive.py. Specifically, the class FeatureNet is for representation learning, while the class PredNet is for the prediction task. The transfer learning step loads the FeatureNet trained in 1) to generate representations, which are input to PredNet.
 
 This sample code uses a simple LSTM backbone with three inputs: code.npy (diagnosis and procedure codes index as numbers, e.g., 0, 1, ...); length.npy (the number of visits for each patient); aux_info.npy (auxiliary information, e.g., the demographic, time interval between visits, etc.,one-hot encoded). Please construct your own input according to your data and tasks. Also you can use other more up-to-date SOTA backbones like transformers to model the patient visit sequence, and change the hyper-parameters for data augmentation that best fit your data.
 
